@@ -68,7 +68,8 @@ st.markdown("""
 st.markdown("""
 <div class="header">
     <h2>Hệ thống dự đoán ý định mua hàng</h2>
-    <p>Ứng dụng mô hình Machine Learning để dự đoán khả năng mua hàng</p>
+    <p>Ứng dụng mô hình XGBoost nhằm dự đoán khả năng
+        khách truy cập website thương mại điện tử thực hiện mua hàng</p>
 </div>
 """, unsafe_allow_html=True)
 
@@ -113,3 +114,4 @@ if st.button("🔮 Dự đoán"):
         "Lớp": model.classes_,
         "Xác suất": probability
     }))
+
