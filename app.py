@@ -10,9 +10,8 @@ SCALER_PATH = os.path.join(BASE_DIR, "models", "XGBoost_scaler.pkl")
 ENCODER_PATH = os.path.join(BASE_DIR, "models", "XGBoost_label_encoder.pkl")
 FEATURE_PATH = os.path.join(BASE_DIR, "models", "XGBoost_important_features.pkl")
 
-# =========================
 # LOAD MODEL & ARTIFACTS
-# =========================
+
 @st.cache_resource
 def load_artifacts():
     model = joblib.load(MODEL_PATH)
@@ -108,5 +107,6 @@ if st.button("🔮 Dự đoán"):
         "Lớp": model.classes_,
         "Xác suất": probability
     }))
+
 
 
