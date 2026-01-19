@@ -3,9 +3,7 @@ import pandas as pd
 import joblib
 import os
 
-# =========================
 # CẤU HÌNH ĐƯỜNG DẪN
-# =========================
 BASE_DIR = os.path.dirname(__file__)
 MODEL_PATH = os.path.join(BASE_DIR, "models", "XGBoost_best.pkl")
 SCALER_PATH = os.path.join(BASE_DIR, "models", "XGBoost_scaler.pkl")
@@ -25,9 +23,7 @@ def load_artifacts():
 
 model, scaler, label_encoders, important_features = load_artifacts()
 
-# =========================
 # TÊN THUỘC TÍNH TIẾNG VIỆT
-# =========================
 feature_name_vi = {
     'Administrative': 'Số trang quản trị',
     'Administrative_Duration': 'Thời gian trang quản trị',
@@ -40,9 +36,8 @@ feature_name_vi = {
     'PageValues': 'Giá trị trang'
 }
 
-# =========================
+
 # GIAO DIỆN
-# =========================
 st.set_page_config(page_title="Dự đoán ý định mua hàng", layout="wide")
 
 st.markdown("""
@@ -92,9 +87,8 @@ for i in range(0, len(important_features), num_cols):
 
 st.markdown('</div>', unsafe_allow_html=True)
 
-# =========================
+
 # DỰ ĐOÁN
-# =========================
 if st.button("🔮 Dự đoán"):
     input_df = pd.DataFrame([input_data])
     input_scaled = scaler.transform(input_df)
@@ -114,4 +108,5 @@ if st.button("🔮 Dự đoán"):
         "Lớp": model.classes_,
         "Xác suất": probability
     }))
+
 
